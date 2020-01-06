@@ -1,5 +1,3 @@
-# geoquiz
-
 # Overview
 
 GeoQuiz allows users to select a region of the world and tests their geography knowledge. 

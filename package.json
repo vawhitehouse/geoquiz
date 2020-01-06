@@ -11,6 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@amcharts/amcharts4": "^4.7.18",
+    "@amcharts/amcharts4-geodata": "^4.1.9",
     "@babel/core": "^7.7.7",
     "@babel/preset-env": "^7.7.7",
     "autoprefixer": "^9.7.3",
