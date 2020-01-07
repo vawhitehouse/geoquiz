@@ -2,4 +2,6 @@
   width: 1000px;
   height: 600px;
   background-color: rgb(37, 36, 37);
+  border: 5px solid rgb(37, 36, 37)
+  /* color: #bebebe; */
 }
