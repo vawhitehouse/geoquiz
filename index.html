@@ -6,28 +6,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <link rel="stylesheet" href="./dist/main.css" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700|Raleway:500&display=swap" rel="stylesheet">
   <title>GeoQuiz</title>
   <script src="https://www.amcharts.com/lib/4/core.js"></script>
   <script src="//www.amcharts.com/lib/4/maps.js"></script>
   <script src="https://www.amcharts.com/lib/4/geodata/worldLow.js"></script>
   <script src="https://www.amcharts.com/lib/4/geodata/worldHigh.js"></script>
-  <script src="https://www.amcharts.com/lib/4/geodata/continentsRussiaEuropeHigh.js"></script>
+  <script src="https://www.amcharts.com/lib/4/geodata/croatiaHigh.js"></script>
+  <script src="https://www.amcharts.com/lib/4/geodata/continentsRussiaAsiaHigh.js"></script>
 </head>
 
 <body>
   <script src="./dist/main.js"></script>
   
-  <div>
-    <h4>Select a region:</h4>
-    <p>Africa</p>
-    <p>Asia</p>
-    <p>Central & North America</p>
-    <a id='europe'>Europe</a>
-    <p>South America</p>
-    <p>Oceania</p>
+  <div class="main-container">
+    <div class="region-container">
+      <h4 class="region-header">Select a region:</h4>
+      <ul class="region-list">
+        <li id='africa'>Africa</li>
+        <li id='asia'>Asia</li>
+        <li id='central-north-america'>Central & North America</li>
+        <li id='europe'>Europe</li>
+        <li id='south-america'>South America</li>
+        <li id='oceania'>Oceania</li>
+      </ul>
+    </div>
+    
+      <div id='mapdiv'></div>
   </div>
-
-  <div id='mapdiv'></div>
 
 </body>
 

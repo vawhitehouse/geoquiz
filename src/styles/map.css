@@ -1,7 +1,10 @@
 #mapdiv {
+  margin: 0 auto;
   width: 1000px;
   height: 600px;
   background-color: rgb(37, 36, 37);
-  border: 5px solid rgb(37, 36, 37)
-  /* color: #bebebe; */
+  border: 5px solid rgb(37, 36, 37);
+  border-radius: 20px;
+  box-shadow: rgba(0,0,0,0.5) 0px 1px 20px 0px;
+  /* color: #bebebe; */ 
 }

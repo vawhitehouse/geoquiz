@@ -1,7 +1,31 @@
-#europe {
-  color: rgb(29, 68, 245);
+.main-container {
+  padding: 50px 0px;
 }
 
-#europe:hover {
+.region-container {
+  width: 1000px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.region-header {
+  padding-bottom: 20px;
+  font-size: 20px;
+  font-family: 'Montserrat';
+}
+
+.region-list {
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+  padding-bottom: 20px;
+}
+
+.region-list li {
+  color: rgb(29, 68, 245);
+  font-family: 'Raleway';
+}
+
+.region-list li:hover {
   cursor: pointer;
 }
