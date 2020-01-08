@@ -11,7 +11,11 @@ export default class Map {
     map.geodata = am4geodata_worldHigh;
     // Set projection
     map.projection = new am4maps.projections.NaturalEarth1();
-    
+
+    if (this.region === 'oceania'){
+      map.deltaLongitude = -160;
+    }
+    // map.panBehavior = "rotateLongLat";
     
 
     // Create map polygon series
@@ -20,17 +24,16 @@ export default class Map {
     // Make map load polygon (like country names) data from GeoJSON
     mapSeries.useGeodata = true;
 
-    // ZOOM ON CLICK
-    // polygonSeries.mapPolygons.template.events.on("hit", function(ev) {
-    //   map.zoomToMapObject(ev.target);
-    // });
-
     // Configure series
     let mapTemplate = mapSeries.mapPolygons.template;
     mapTemplate.tooltipText = "{name}";
     mapTemplate.fill = am4core.color("#e1e2e9");
     let hoverState = mapTemplate.states.create("hover");
     hoverState.properties.fill = am4core.color("#bebebe");
+
+
+
+    
 
     // // determine which countries to include
     // const countries = (region) => {
@@ -258,6 +261,7 @@ export default class Map {
 
     // // countries to include
     // mapSeries.include = countries(this.region);
+    
 
     // determine which countries need circle identifier
     const smallCountries = (region) => {
@@ -384,6 +388,54 @@ export default class Map {
               title: "Saint Vincent and the Grenadines"
             }
           ];
+        case "oceania":
+          return [
+            {
+              latitude: 7.131474,
+              longitude: 171.1844788,
+              title: "Marshall Islands"
+            },
+            {
+              latitude: 7.4255538,
+              longitude: 150.5508118,
+              title: "Micronesia"
+            },
+            {
+              latitude: 7.5149798,
+              longitude: 134.5825195,
+              title: "Palau"
+            },
+            {
+              latitude: -0.522778,
+              longitude: 166.9315033,
+              title: "Nauru"
+            },
+            {
+              latitude: -3.3704171,
+              longitude: -168.7340393,
+              title: "Kiribati"
+            },
+            {
+              latitude: -9.64571,
+              longitude: 160.156189,
+              title: "Solomon Islands"
+            },
+            {
+              latitude: -7.1095352,
+              longitude: 177.6493225,
+              title: "Tuvalu"
+            },
+            {
+              latitude: -15.3767061,
+              longitude: 166.9591522,
+              title: "Vanuatu"
+            },
+            {
+              latitude: -21.1789856,
+              longitude: -175.1982422,
+              title: "Tonga"
+            }
+          ];
       }
     }
     
@@ -406,22 +458,24 @@ export default class Map {
     const zoom = (region) => {
       switch (region) {
         case "africa":
-          return 1.1;
+          return 2.5;
         case "asia":
           return 2.6;
         case "europe":
           return 6;
         case 'northAmerica':
          return 3.1;
+        case 'southAmerica':
+          return 2.65;
+        case 'oceania':
+          return 3;
       }
     }
 
     // set zoom level
     map.homeZoomLevel = zoom(this.region);
 
-    // determine geo point
-      // latitude moves up/down
-      // longitude moves left/right
+    // determine geo point  //  latitude -> up/down  //  longitude -> left/right
     const geoPt = (region) => {
       switch (region) {
         case "africa":
@@ -444,6 +498,16 @@ export default class Map {
             latitude: 36,
             longitude: -110
           };
+        case 'southAmerica':
+          return {
+            latitude: -21,
+            longitude: -65
+          }
+        case 'oceania':
+          return {
+            latitude: -20,
+            longitude: 145
+          }
       }
     }
 
