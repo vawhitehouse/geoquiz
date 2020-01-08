@@ -221,6 +221,22 @@ export default class Map {
             "TT"
             // "US"
           ];
+        case "southAmerica": 
+          return [
+            "AR",
+            "BO",
+            "BR",
+            "CL",
+            "CO",
+            "EC",
+            "GY",
+            "PY",
+            "PU",
+            "PE",
+            "SR",
+            "UY",
+            "VE"
+          ];
       }
     }
 
