@@ -405,12 +405,14 @@ export default class Map {
     // determine zoom level
     const zoom = (region) => {
       switch (region) {
-        case "europe":
-          return 6;
         case "africa":
           return 1.1;
         case "asia":
           return 2.6;
+        case "europe":
+          return 6;
+        case 'northAmerica':
+         return 3.1;
       }
     }
 
@@ -436,6 +438,11 @@ export default class Map {
           return {
             latitude: 50,
             longitude: 12
+          };
+        case 'northAmerica':
+          return {
+            latitude: 36,
+            longitude: -110
           };
       }
     }
