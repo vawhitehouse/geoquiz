@@ -221,7 +221,7 @@ export default class Map {
             "TT"
             // "US"
           ];
-        case "southAmerica": 
+        case "southAmerica":
           return [
             "AR",
             "BO",
@@ -236,6 +236,23 @@ export default class Map {
             "SR",
             "UY",
             "VE"
+          ];
+        case "oceania":
+          return [
+            "AU",
+            "FJ",
+            "KI",
+            "MH",
+            "FM",
+            "NR",
+            "NZ",
+            "PW",
+            "PG",
+            "WS",
+            "SB",
+            "TO",
+            "TV",
+            "VU"
           ];
       }
     }
