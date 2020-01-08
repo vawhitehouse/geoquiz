@@ -29,234 +29,237 @@ export default class Map {
     let mapTemplate = mapSeries.mapPolygons.template;
     mapTemplate.tooltipText = "{name}";
     mapTemplate.fill = am4core.color("#e1e2e9");
-
     let hoverState = mapTemplate.states.create("hover");
     hoverState.properties.fill = am4core.color("#bebebe");
 
+    // // determine which countries to include
+    // const countries = (region) => {
+    //   switch (region) {
+    //     case "africa":
+    //       return [
+    //         "DZ",
+    //         "AO",
+    //         "BJ",
+    //         "BW",
+    //         "BF",
+    //         "BI",
+    //         "CV",
+    //         "CM",
+    //         "CF",
+    //         "TD",
+    //         "KM",
+    //         "CD",
+    //         "CG",
+    //         "CI",
+    //         "DJ",
+    //         "EG",
+    //         "GQ",
+    //         "ER",
+    //         "SZ",
+    //         "ET",
+    //         "GA",
+    //         "GM",
+    //         "GH",
+    //         "GN",
+    //         "GW",
+    //         "KE",
+    //         "LS",
+    //         "LR",
+    //         "LY",
+    //         "MG",
+    //         "MW",
+    //         "ML",
+    //         "MR",
+    //         "MU",
+    //         "MA",
+    //         "MZ",
+    //         "NA",
+    //         "NE",
+    //         "NG",
+    //         "RW",
+    //         "ST",
+    //         "SN",
+    //         "SC",
+    //         "SL",
+    //         "SO",
+    //         "ZA",
+    //         "SS",
+    //         "SD",
+    //         "TZ",
+    //         "TG",
+    //         "TN",
+    //         "UG",
+    //         "ZM",
+    //         "ZW"
+    //       ];
+    //     case "asia":
+    //       return [
+    //         "AF",
+    //         "AM",
+    //         "AZ",
+    //         "BH",
+    //         "BD",
+    //         "BT",
+    //         "BN",
+    //         "KH",
+    //         "CN",
+    //         "GE",
+    //         "IN",
+    //         "ID",
+    //         "IR",
+    //         "IQ",
+    //         "IL",
+    //         "JP",
+    //         "JO",
+    //         "KZ",
+    //         "KW",
+    //         "KG",
+    //         "LA",
+    //         "LB",
+    //         "MY",
+    //         "MV",
+    //         "MN",
+    //         "MM",
+    //         "NP",
+    //         "KP",
+    //         "KR",
+    //         "OM",
+    //         "PK",
+    //         "PS",
+    //         "PH",
+    //         "QA",
+    //         // "RU", // RUSSIA,
+    //         "SA",
+    //         "SG",
+    //         "LK",
+    //         "SY",
+    //         "TW",
+    //         "TJ",
+    //         "TH",
+    //         "TL",
+    //         "TR",
+    //         "TM",
+    //         "AE",
+    //         "UZ",
+    //         "VN",
+    //         "YE"
+    //       ];
+    //     case "europe":
+    //       return [
+    //         "PT",
+    //         "ES",
+    //         "FR",
+    //         "DE",
+    //         "BE",
+    //         "NL",
+    //         "IT",
+    //         "AT",
+    //         "GB",
+    //         "IE",
+    //         "CH",
+    //         "LU",
+    //         "AD",
+    //         "AL",
+    //         "BA",
+    //         "BG",
+    //         "BY",
+    //         "CY",
+    //         "CZ",
+    //         "DK",
+    //         "EE",
+    //         "FI",
+    //         "GR",
+    //         "HR",
+    //         "HU",
+    //         "IS",
+    //         "LI",
+    //         "LT",
+    //         "LV",
+    //         "MC",
+    //         "MD",
+    //         "ME",
+    //         "MK",
+    //         "MT",
+    //         "NO",
+    //         "PL",
+    //         "RO",
+    //         "RS",
+    //         // "RU", //Russia
+    //         "SE",
+    //         "SI",
+    //         "SK",
+    //         "SM",
+    //         "TR",
+    //         "UA",
+    //         "VA",
+    //         "XK"
+    //       ];
+    //     case "northAmerica":
+    //       return [
+    //         "AG",
+    //         "BS",
+    //         "BB",
+    //         "BZ",
+    //         "CA",
+    //         "CR",
+    //         "CU",
+    //         "DM",
+    //         "DO",
+    //         "SV",
+    //         "GD",
+    //         "GT",
+    //         "HT",
+    //         "HN",
+    //         "JM",
+    //         "MX",
+    //         "NI",
+    //         "PA",
+    //         "KN",
+    //         "LC",
+    //         "VC",
+    //         "TT"
+    //         // "US"
+    //       ];
+    //     case "southAmerica":
+    //       return [
+    //         "AR",
+    //         "BO",
+    //         "BR",
+    //         "CL",
+    //         "CO",
+    //         "EC",
+    //         "GY",
+    //         "PY",
+    //         "PU",
+    //         "PE",
+    //         "SR",
+    //         "UY",
+    //         "VE"
+    //       ];
+    //     case "oceania":
+    //       return [
+    //         "AU",
+    //         "FJ",
+    //         "KI",
+    //         "MH",
+    //         "FM",
+    //         "NR",
+    //         "NZ",
+    //         "PW",
+    //         "PG",
+    //         "WS",
+    //         "SB",
+    //         "TO",
+    //         "TV",
+    //         "VU"
+    //       ];
+    //   }
+    // }
 
-    const countries = (region) => {
-      switch (region) {
-        case "africa":
-          return [
-            "DZ",
-            "AO",
-            "BJ",
-            "BW",
-            "BF",
-            "BI",
-            "CV",
-            "CM",
-            "CF",
-            "TD",
-            "KM",
-            "CD",
-            "CG",
-            "CI",
-            "DJ",
-            "EG",
-            "GQ",
-            "ER",
-            "SZ",
-            "ET",
-            "GA",
-            "GM",
-            "GH",
-            "GN",
-            "GW",
-            "KE",
-            "LS",
-            "LR",
-            "LY",
-            "MG",
-            "MW",
-            "ML",
-            "MR",
-            "MU",
-            "MA",
-            "MZ",
-            "NA",
-            "NE",
-            "NG",
-            "RW",
-            "ST",
-            "SN",
-            "SC",
-            "SL",
-            "SO",
-            "ZA",
-            "SS",
-            "SD",
-            "TZ",
-            "TG",
-            "TN",
-            "UG",
-            "ZM",
-            "ZW"
-          ];
-        case "asia":
-          return [
-            "AF",
-            "AM",
-            "AZ",
-            "BH",
-            "BD",
-            "BT",
-            "BN",
-            "KH",
-            "CN",
-            "GE",
-            "IN",
-            "ID",
-            "IR",
-            "IQ",
-            "IL",
-            "JP",
-            "JO",
-            "KZ",
-            "KW",
-            "KG",
-            "LA",
-            "LB",
-            "MY",
-            "MV",
-            "MN",
-            "MM",
-            "NP",
-            "KP",
-            "KR",
-            "OM",
-            "PK",
-            "PS",
-            "PH",
-            "QA",
-            // "RU", // RUSSIA,
-            "SA",
-            "SG",
-            "LK",
-            "SY",
-            "TW",
-            "TJ",
-            "TH",
-            "TL",
-            "TR",
-            "TM",
-            "AE",
-            "UZ",
-            "VN",
-            "YE"
-          ];
-        case "europe":
-          return [
-            "PT",
-            "ES",
-            "FR",
-            "DE",
-            "BE",
-            "NL",
-            "IT",
-            "AT",
-            "GB",
-            "IE",
-            "CH",
-            "LU",
-            "AD",
-            "AL",
-            "BA",
-            "BG",
-            "BY",
-            "CY",
-            "CZ",
-            "DK",
-            "EE",
-            "FI",
-            "GR",
-            "HR",
-            "HU",
-            "IS",
-            "LI",
-            "LT",
-            "LV",
-            "MC",
-            "MD",
-            "ME",
-            "MK",
-            "MT",
-            "NO",
-            "PL",
-            "RO",
-            "RS",
-            // "RU", //Russia
-            "SE",
-            "SI",
-            "SK",
-            "SM",
-            "TR",
-            "UA",
-            "VA",
-            "XK"
-          ];
-        case "northAmerica":
-          return [
-            "AG",
-            "BS",
-            "BB",
-            "BZ",
-            "CA",
-            "CR",
-            "CU",
-            "DM",
-            "DO",
-            "SV",
-            "GD",
-            "GT",
-            "HT",
-            "HN",
-            "JM",
-            "MX",
-            "NI",
-            "PA",
-            "KN",
-            "LC",
-            "VC",
-            "TT"
-            // "US"
-          ];
-        case "southAmerica":
-          return [
-            "AR",
-            "BO",
-            "BR",
-            "CL",
-            "CO",
-            "EC",
-            "GY",
-            "PY",
-            "PU",
-            "PE",
-            "SR",
-            "UY",
-            "VE"
-          ];
-        case "oceania":
-          return [
-            "AU",
-            "FJ",
-            "KI",
-            "MH",
-            "FM",
-            "NR",
-            "NZ",
-            "PW",
-            "PG",
-            "WS",
-            "SB",
-            "TO",
-            "TV",
-            "VU"
-          ];
-      }
-    }
+    // // countries to include
+    // mapSeries.include = countries(this.region);
 
+    // determine which countries need circle identifier
     const smallCountries = (region) => {
       switch (region) {
         case "africa":
@@ -384,9 +387,6 @@ export default class Map {
       }
     }
     
-    // countries to include
-    mapSeries.include = countries(this.region);
-
     // create circles for small countries
     let imageSeries = map.series.push(new am4maps.MapImageSeries());
     let imageSeriesTemplate = imageSeries.mapImages.template;
@@ -400,6 +400,48 @@ export default class Map {
     imageSeriesTemplate.propertyFields.latitude = "latitude";
     imageSeriesTemplate.propertyFields.longitude = "longitude";
     imageSeries.data = smallCountries(this.region)
+
+
+    // determine zoom level
+    const zoom = (region) => {
+      switch (region) {
+        case "europe":
+          return 6;
+        case "africa":
+          return 1.1;
+        case "asia":
+          return 2.6;
+      }
+    }
+
+    // set zoom level
+    map.homeZoomLevel = zoom(this.region);
+
+    // determine geo point
+      // latitude moves up/down
+      // longitude moves left/right
+    const geoPt = (region) => {
+      switch (region) {
+        case "africa":
+          return {
+            latitude: 2,
+            longitude: 12
+          }
+        case "asia":
+          return {
+            latitude: 24,
+            longitude: 96
+          }
+        case "europe": 
+          return {
+            latitude: 50,
+            longitude: 12
+          };
+      }
+    }
+
+    // set geo point
+    map.homeGeoPoint = geoPt(this.region);
 
   }
 }
