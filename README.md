@@ -12,7 +12,7 @@ Users can test their geography knowledge of various regions of the world.
     * Asia
     * Africa
     * South America
-    * North/Central America
+    * North America
     * Oceania
     * World
 3. Game logic 

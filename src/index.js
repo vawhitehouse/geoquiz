@@ -16,8 +16,8 @@ window.addEventListener("DOMContentLoaded", () => {
     .getElementById("asia")
     .addEventListener("click", () => displayMap("asia"));
   document
-    .getElementById("central-north-america")
-    .addEventListener("click", () => displayMap("centralNorthAmerica"));
+    .getElementById("north-america")
+    .addEventListener("click", () => displayMap("northAmerica"));
   document
     .getElementById("south-america")
     .addEventListener("click", () => displayMap("southAmerica"));
