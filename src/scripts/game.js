@@ -8,7 +8,7 @@ export default class Game {
   startGame() {
     let countries = this.countriesToInclude(this.region);
     this.randomize(countries);
-    
+
   }
 
   // determine which countries to include
