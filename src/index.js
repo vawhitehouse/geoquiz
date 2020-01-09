@@ -2,13 +2,22 @@ import './styles/reset.css';
 import './styles/index.scss';
 import './styles/map.css';
 import Map from './scripts/map';
-
+import Game from './scripts/game';
 
 
 window.addEventListener("DOMContentLoaded", () => {
+  function displayMap(region) {
+    new Map(region);
+  }
+
+  displayMap();
+
+
   document
     .getElementById("europe")
     .addEventListener("click", () => displayMap("europe"));
+
+
   document
     .getElementById("africa")
     .addEventListener("click", () => displayMap("africa"));
@@ -24,10 +33,10 @@ window.addEventListener("DOMContentLoaded", () => {
   document
     .getElementById("oceania")
     .addEventListener("click", () => displayMap("oceania"));
+  document
+    .getElementById("world")
+    .addEventListener("click", () => displayMap());
 
-  function displayMap(region) {
-    document.getElementById("mapdiv")
-    new Map(region)
-  }
+
   
 });
