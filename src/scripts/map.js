@@ -1,15 +1,12 @@
-import Game from './game';
-
 export default class Map {
   constructor(region = null) {
     this.region = region;
     this.renderMap();
-    if (this.region) new Game(this.region);
   }
 
   renderMap() {
     // Create map instance
-    let map = am4core.create("mapdiv", am4maps.MapChart);
+    const map = am4core.create("mapdiv", am4maps.MapChart);
     // Set map definition
     map.geodata = am4geodata_worldHigh;
     // Set projection
@@ -28,29 +25,39 @@ export default class Map {
 
     // Configure series
     let mapTemplate = mapSeries.mapPolygons.template;
-      // mapTemplate.tooltipText = "{name}";
+    // mapTemplate.tooltipText = "{name}";
+    // map.Template.hideTooltip();
     mapTemplate.fill = am4core.color("#e1e2e9");
+
     let hoverState = mapTemplate.states.create("hover");
     hoverState.properties.fill = am4core.color("#bebebe");    
 
     
     // create circles for small countries
-    let imageSeries = map.series.push(new am4maps.MapImageSeries());
-    let imageSeriesTemplate = imageSeries.mapImages.template;
-    let circle = imageSeriesTemplate.createChild(am4core.Circle);
+    let circleSeries = map.series.push(new am4maps.MapImageSeries());
+    let circleSeriesTemplate = circleSeries.mapImages.template;
+    let circle = circleSeriesTemplate.createChild(am4core.Circle);
     circle.radius = 4;
     circle.fill = am4core.color("#f94dff");
     circle.stroke = am4core.color("#FFFFFF");
     circle.strokeWidth = 1;
     circle.nonScaling = true;
       // circle.tooltipText = "{title}";
-    imageSeriesTemplate.propertyFields.latitude = "latitude";
-    imageSeriesTemplate.propertyFields.longitude = "longitude";
-    imageSeries.data = this.smallCountries(this.region);
+    circleSeriesTemplate.propertyFields.latitude = "latitude";
+    circleSeriesTemplate.propertyFields.longitude = "longitude";
+    circleSeries.data = this.smallCountries(this.region);
 
-
+    // zoom & center map based on region
     map.homeZoomLevel = this.setZoom(this.region);
     map.homeGeoPoint = this.setGeoPoint(this.region);
+
+    mapTemplate.events.on("hit", e => {
+      let data = e.target.dataItem.dataContext;
+      let name = document.getElementById("currentdiv");
+      name.innerHTML = "<h4>" + data.name + "</h4>";
+    });
+    
+
   }
 
   setZoom(region){

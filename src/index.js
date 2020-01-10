@@ -12,30 +12,33 @@ window.addEventListener("DOMContentLoaded", () => {
 
   displayMap();
 
+  function newGame(region) {
+    new Game(region);
+  }
 
   document
     .getElementById("europe")
-    .addEventListener("click", () => displayMap("europe"));
+    .addEventListener("click", () => newGame("europe"));
 
 
   document
     .getElementById("africa")
-    .addEventListener("click", () => displayMap("africa"));
+    .addEventListener("click", () => newGame("africa"));
   document
     .getElementById("asia")
-    .addEventListener("click", () => displayMap("asia"));
+    .addEventListener("click", () => newGame("asia"));
   document
     .getElementById("north-america")
-    .addEventListener("click", () => displayMap("northAmerica"));
+    .addEventListener("click", () => newGame("northAmerica"));
   document
     .getElementById("south-america")
-    .addEventListener("click", () => displayMap("southAmerica"));
+    .addEventListener("click", () => newGame("southAmerica"));
   document
     .getElementById("oceania")
-    .addEventListener("click", () => displayMap("oceania"));
+    .addEventListener("click", () => newGame("oceania"));
   document
     .getElementById("world")
-    .addEventListener("click", () => displayMap());
+    .addEventListener("click", () => newGame());
 
 
   

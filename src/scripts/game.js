@@ -1,13 +1,17 @@
+import Map from "./map";
+
 export default class Game {
   constructor(region) {
     this.region = region;
+    this.map = new Map(this.region);
+    this.countries = this.countriesToInclude(this.region);
+    this.randomize(countries);
     this.startGame();
   }
 
 
   startGame() {
-    let countries = this.countriesToInclude(this.region);
-    this.randomize(countries);
+    this.playRound(this.countries);
 
   }
 
@@ -245,5 +249,8 @@ export default class Game {
     }
   }
 
+  playRound(countries) {
+    
+  }
 
 }
