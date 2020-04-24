@@ -6,7 +6,7 @@ GeoQuiz allows users to select a region of the world and tests their geography k
 
 Users can test their geography knowledge of various regions of the world. 
 
-1. Hosting on Heroku
+1. Hosting on GitHub
 2. Use map library to display regions (https://www.amcharts.com/javascript-maps/)
     * Europe
     * Asia
