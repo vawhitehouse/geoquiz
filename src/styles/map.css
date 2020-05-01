@@ -1,5 +1,5 @@
 .map-wrapper {
-  border: 5px solid rgb(37, 36, 37);
+  border: 15px solid rgb(37, 36, 37);
   border-radius: 20px;
   margin: 0 auto;
   width: 1000px;
@@ -10,4 +10,5 @@
 
 #mapdiv {
   height: 100%;
+  /* color: #777777; */ 
 }

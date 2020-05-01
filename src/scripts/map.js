@@ -1,62 +1,52 @@
 export default class Map {
   constructor(region = null) {
     this.region = region;
-    this.renderMap();
+    this.map = am4core.create("mapdiv", am4maps.MapChart); // Create map instance
+    this.mapSeries = this.map.series.push(new am4maps.MapPolygonSeries()); // Create map polygon series
+    this.mapTemplate = this.mapSeries.mapPolygons.template; // Configure series
+    this.hoverState = this.mapTemplate.states.create("hover");
+    this.circleSeries = this.map.series.push(new am4maps.MapImageSeries());
+    this.circleSeriesTemplate = this.circleSeries.mapImages.template;
+    this.circle = this.circleSeriesTemplate.createChild(am4core.Circle);
+    this.renderMap(); 
   }
 
   renderMap() {
-    // Create map instance
-    const map = am4core.create("mapdiv", am4maps.MapChart);
     // Set map definition
-    map.geodata = am4geodata_worldHigh;
+    this.map.geodata = am4geodata_worldHigh;
     // Set projection
-    map.projection = new am4maps.projections.NaturalEarth1();
-
+    this.map.projection = new am4maps.projections.NaturalEarth1();
+    // Make map load polygon (like country names) data from GeoJSON
+    this.mapSeries.useGeodata = true;
     if (this.region === 'oceania'){
       // set this so oceania islands aren't split
-      map.deltaLongitude = -160;
+      this.map.deltaLongitude = -160;
     }
-    
-    // Create map polygon series
-    let mapSeries = map.series.push(new am4maps.MapPolygonSeries());
-    
-    // Make map load polygon (like country names) data from GeoJSON
-    mapSeries.useGeodata = true;
+        
+    // this.mapTemplate.hideTooltip();
+    // this.mapTemplate.tooltipText = "{name}";
+    this.mapTemplate.fill = am4core.color("#e1e2e9");
 
-    // Configure series
-    let mapTemplate = mapSeries.mapPolygons.template;
-    // mapTemplate.tooltipText = "{name}";
-    // map.Template.hideTooltip();
-    mapTemplate.fill = am4core.color("#e1e2e9");
-
-    let hoverState = mapTemplate.states.create("hover");
-    hoverState.properties.fill = am4core.color("#bebebe");    
+    this.hoverState.properties.fill = am4core.color("#bebebe");    
 
     
     // create circles for small countries
-    let circleSeries = map.series.push(new am4maps.MapImageSeries());
-    let circleSeriesTemplate = circleSeries.mapImages.template;
-    let circle = circleSeriesTemplate.createChild(am4core.Circle);
-    circle.radius = 4;
-    circle.fill = am4core.color("#f94dff");
-    circle.stroke = am4core.color("#FFFFFF");
-    circle.strokeWidth = 1;
-    circle.nonScaling = true;
-      // circle.tooltipText = "{title}";
-    circleSeriesTemplate.propertyFields.latitude = "latitude";
-    circleSeriesTemplate.propertyFields.longitude = "longitude";
-    circleSeries.data = this.smallCountries(this.region);
+    this.circle.radius = 4;
+    this.circle.fill = am4core.color("#e1e2e9");
+    this.circle.stroke = am4core.color("#FFFFFF");
+    this.circle.strokeWidth = 1;
+    this.circle.nonScaling = true;
+      this.circle.tooltipText = "{title}";
+    this.circleSeriesTemplate.propertyFields.latitude = "latitude";
+    this.circleSeriesTemplate.propertyFields.longitude = "longitude";
+    this.circleSeries.data = this.smallCountries(this.region);
 
     // zoom & center map based on region
-    map.homeZoomLevel = this.setZoom(this.region);
-    map.homeGeoPoint = this.setGeoPoint(this.region);
+    this.map.homeZoomLevel = this.setZoom(this.region);
+    this.map.homeGeoPoint = this.setGeoPoint(this.region);
 
-    mapTemplate.events.on("hit", e => {
-      let data = e.target.dataItem.dataContext;
-      let name = document.getElementById("currentdiv");
-      name.innerHTML = "<h4>" + data.name + "</h4>";
-    });
-    
+    am4core.Tooltip.fontFamily = "Raleway";
+    am4core.Tooltip.fontSize = "200px";
 
   }
 

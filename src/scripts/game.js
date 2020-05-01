@@ -5,7 +5,7 @@ export default class Game {
     this.region = region;
     this.map = new Map(this.region);
     this.countries = this.countriesToInclude(this.region);
-    this.randomize(countries);
+    this.randomize(this.countries);
     this.startGame();
   }
 
@@ -221,20 +221,28 @@ export default class Game {
         ];
       case "oceania":
         return [
-          "AU",
-          "FJ",
-          "KI",
-          "MH",
-          "FM",
-          "NR",
-          "NZ",
-          "PW",
-          "PG",
-          "WS",
-          "SB",
-          "TO",
-          "TV",
-          "VU"
+          {
+           "id": "AU",
+           "name": "Australia" 
+          },
+          {
+            "id": "FJ",
+            "name": "Fiji"
+          }
+          // "AU",
+          // "FJ",
+          // "KI",
+          // "MH",
+          // "FM",
+          // "NR",
+          // "NZ",
+          // "PW",
+          // "PG",
+          // "WS",
+          // "SB",
+          // "TO",
+          // "TV",
+          // "VU"
         ];
       default:
         return null;
@@ -250,7 +258,38 @@ export default class Game {
   }
 
   playRound(countries) {
+    this.map.mapTemplate.tooltipText = "{name}"
+    
+    
+    // let currentCountry = countries.shift();
+    // console.log(currentCountry.name);
+
+    // this.map.mapTemplate.tooltipText = `Click on ${currentCountry.name}`;
+
+    
+    // this.map.mapSeries.mapPolygons.template.events.on("hit", function(e) {
+      
+
+    // })
+
+
+    // this.map.mapTemplate.hideTooltip();
+    // this.mapTemplate.events.once("hit", e => {
+
+    //   // let name = document.getElementById("currentdiv");
+    //   // let data = e.target.dataItem.dataContext;
+    //   // let circleTitle = e.target.data.title;
+    //   // console.log(e.target.data.title);
+    //   // if (data){
+    //   //   name.innerHTML = "<h4>" + data.name + "</h4>";
+    //   // } 
+    //   // if (circleTitle) {
+    //   //   name.innerHTML = "<h4>" + circleTitle + "</h4>";
+    //   // }
+    // });
+    
     
   }
+
 
 }
