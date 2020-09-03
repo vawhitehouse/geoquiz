@@ -2,6 +2,7 @@ import Map from "./map";
 
 export default class Game {
   constructor(region) {
+    console.log(`starting game, region: ${region}`)
     this.region = region;
     this.map = new Map(this.region);
     this.countries = this.countriesToInclude(this.region);
@@ -19,206 +20,17 @@ export default class Game {
   countriesToInclude(region) {
     switch (region) {
       case "africa":
-        return [
-          "DZ",
-          "AO",
-          "BJ",
-          "BW",
-          "BF",
-          "BI",
-          "CV",
-          "CM",
-          "CF",
-          "TD",
-          "KM",
-          "CD",
-          "CG",
-          "CI",
-          "DJ",
-          "EG",
-          "GQ",
-          "ER",
-          "SZ",
-          "ET",
-          "GA",
-          "GM",
-          "GH",
-          "GN",
-          "GW",
-          "KE",
-          "LS",
-          "LR",
-          "LY",
-          "MG",
-          "MW",
-          "ML",
-          "MR",
-          "MU",
-          "MA",
-          "MZ",
-          "NA",
-          "NE",
-          "NG",
-          "RW",
-          "ST",
-          "SN",
-          "SC",
-          "SL",
-          "SO",
-          "ZA",
-          "SS",
-          "SD",
-          "TZ",
-          "TG",
-          "TN",
-          "UG",
-          "ZM",
-          "ZW"
-        ];
+        return ["DZ", "AO", "BJ", "BW", "BF", "BI", "CV", "CM", "CF", "TD", "KM", "CD", "CG", "CI", "DJ", "EG", "GQ", "ER", "SZ", "ET", "GA", "GM", "GH", "GN", "GW", "KE", "LS", "LR", "LY", "MG", "MW", "ML", "MR", "MU", "MA", "MZ", "NA", "NE", "NG", "RW", "ST", "SN", "SC", "SL", "SO", "ZA", "SS", "SD", "TZ", "TG", "TN", "UG", "ZM", "ZW"];
       case "asia":
-        return [
-          "AF",
-          "AM",
-          "AZ",
-          "BH",
-          "BD",
-          "BT",
-          "BN",
-          "KH",
-          "CN",
-          "GE",
-          "IN",
-          "ID",
-          "IR",
-          "IQ",
-          "IL",
-          "JP",
-          "JO",
-          "KZ",
-          "KW",
-          "KG",
-          "LA",
-          "LB",
-          "MY",
-          "MV",
-          "MN",
-          "MM",
-          "NP",
-          "KP",
-          "KR",
-          "OM",
-          "PK",
-          "PS",
-          "PH",
-          "QA",
-          "RU", 
-          "SA",
-          "SG",
-          "LK",
-          "SY",
-          "TW",
-          "TJ",
-          "TH",
-          "TL",
-          "TR",
-          "TM",
-          "AE",
-          "UZ",
-          "VN",
-          "YE"
-        ];
+        return ["AF", "AM", "AZ", "BH", "BD", "BT", "BN", "KH", "CN", "GE", "IN", "ID", "IR", "IQ", "IL", "JP", "JO", "KZ", "KW", "KG", "LA", "LB", "MY", "MV", "MN", "MM", "NP", "KP", "KR", "OM", "PK", "PS", "PH", "QA", "RU",  "SA", "SG", "LK", "SY", "TW", "TJ", "TH", "TL", "TR", "TM", "AE", "UZ", "VN", "YE"];
       case "europe":
-        return [
-          "PT",
-          "ES",
-          "FR",
-          "DE",
-          "BE",
-          "NL",
-          "IT",
-          "AT",
-          "GB",
-          "IE",
-          "CH",
-          "LU",
-          "AD",
-          "AL",
-          "BA",
-          "BG",
-          "BY",
-          "CY",
-          "CZ",
-          "DK",
-          "EE",
-          "FI",
-          "GR",
-          "HR",
-          "HU",
-          "IS",
-          "LI",
-          "LT",
-          "LV",
-          "MC",
-          "MD",
-          "ME",
-          "MK",
-          "MT",
-          "NO",
-          "PL",
-          "RO",
-          "RS",
-          "RU",
-          "SE",
-          "SI",
-          "SK",
-          "SM",
-          "TR",
-          "UA",
-          "VA",
-          "XK"
-        ];
+        return ["PT", "ES", "FR", "DE", "BE", "NL", "IT", "AT", "GB", "IE", "CH", "LU", "AD", "AL", "BA", "BG", "BY", "CY", "CZ", "DK", "EE", "FI", "GR", "HR", "HU", "IS", "LI", "LT", "LV", "MC", "MD", "ME", "MK", "MT", "NO", "PL", "RO", "RS", "RU", "SE", "SI", "SK", "SM", "TR", "UA", "VA", "XK"];
       case "northAmerica":
-        return [
-          "AG",
-          "BS",
-          "BB",
-          "BZ",
-          "CA",
-          "CR",
-          "CU",
-          "DM",
-          "DO",
-          "SV",
-          "GD",
-          "GT",
-          "HT",
-          "HN",
-          "JM",
-          "MX",
-          "NI",
-          "PA",
-          "KN",
-          "LC",
-          "VC",
-          "TT"
+        return ["AG", "BS", "BB", "BZ", "CA", "CR", "CU", "DM", "DO", "SV", "GD", "GT", "HT", "HN", "JM", "MX", "NI", "PA", "KN", "LC", "VC", "TT"
           // "US"
         ];
       case "southAmerica":
-        return [
-          "AR",
-          "BO",
-          "BR",
-          "CL",
-          "CO",
-          "EC",
-          "GY",
-          "PY",
-          "PU",
-          "PE",
-          "SR",
-          "UY",
-          "VE"
-        ];
+        return ["AR", "BO", "BR", "CL", "CO", "EC", "GY", "PY", "PU", "PE", "SR", "UY", "VE"];
       case "oceania":
         return [
           {
@@ -258,13 +70,13 @@ export default class Game {
   }
 
   playRound(countries) {
-    this.map.mapTemplate.tooltipText = "{name}"
+    // this.map.mapTemplate.tooltipText = "?"
+    // this.map.mapTemplate.tooltipText = "{name}"
     
-    
-    // let currentCountry = countries.shift();
-    // console.log(currentCountry.name);
-
-    // this.map.mapTemplate.tooltipText = `Click on ${currentCountry.name}`;
+    let currentCountry = this.countries.shift();
+    console.log(currentCountry);
+    debugger
+    this.map.mapTemplate.tooltipText = `Click on ${currentCountry}`;
 
     
     // this.map.mapSeries.mapPolygons.template.events.on("hit", function(e) {
