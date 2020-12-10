@@ -36,7 +36,7 @@ export default class Map {
     this.circle.stroke = am4core.color("#FFFFFF");
     this.circle.strokeWidth = 1;
     this.circle.nonScaling = true;
-      this.circle.tooltipText = "{title}";
+    this.circle.tooltipText = "{title}";
     this.circleSeriesTemplate.propertyFields.latitude = "latitude";
     this.circleSeriesTemplate.propertyFields.longitude = "longitude";
     this.circleSeries.data = this.smallCountries(this.region);
